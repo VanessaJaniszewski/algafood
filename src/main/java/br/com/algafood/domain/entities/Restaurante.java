@@ -1,8 +1,12 @@
 package br.com.algafood.domain.entities;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -42,6 +46,16 @@ public class Restaurante {
 	@JsonIgnore
 	@Embedded
 	private Endereco endereco;
+	
+	@JsonIgnore
+	@CreationTimestamp
+	@Column(nullable = false)
+	private LocalDateTime dataCadastro;
+	@JsonIgnore
+	@UpdateTimestamp
+	@Column(nullable = false)
+	private LocalDateTime dataAtualizacao;
+	
 	
 	@JsonIgnore
 	@ManyToMany
